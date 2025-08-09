@@ -32,6 +32,9 @@ header > h1 {
 
 article.journal-entry {
     display: flex;
+    margin-bottom: 30px; /* Add this line for spacing between entries */
+    padding-bottom: 20px; /* Optional: add padding for more visual separation */
+    border-bottom: 1px solid #f0f0f0; /* Optional: add a subtle border */
 }
 
 article.journal-entry .marker {
