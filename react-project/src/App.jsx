@@ -7,16 +7,10 @@ import data from './data.js'
 function App() {
 
 const entryElements = data.map((entry) => {
-    return(
+    return (
       <Entry
       key={entry.id}
-      img={entry.img}
-      alt={entry.alt}
-      title={entry.title}
-      country={entry.country}
-      googleMapsLink={entry.googleMapsLink}
-      dates={entry.dates}
-      text={entry.text}
+      entry={entry}
       />
     )
 })
