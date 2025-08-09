@@ -14,7 +14,7 @@ export default function Entry({ img, title, country, googleMapsLink, dates, text
             <div className="info-container">
                 <img 
                     className="marker"
-                    src="../images/marker.png" 
+                    src="/marker.png" 
                     alt="map marker icon"
                 />
                 <span className="country">{country}</span>
