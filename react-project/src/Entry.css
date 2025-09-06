@@ -7,8 +7,11 @@ body {
 }
 
 .container {
-    margin: 45px 40px;
-    padding-top: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #fdf7f0 0%, #fef9f2 100%);
+    min-height: 100vh;
 }
 
 header {
@@ -32,9 +35,31 @@ header > h1 {
 
 article.journal-entry {
     display: flex;
-    margin-bottom: 30px; /* Add this line for spacing between entries */
-    padding-bottom: 20px; /* Optional: add padding for more visual separation */
-    border-bottom: 1px solid #f0f0f0; /* Optional: add a subtle border */
+    gap: 25px;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(139, 69, 19, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+article.journal-entry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #d4af37 0%, #c9a961 25%, #1e90ff 50%, #8b4513 75%, #228b22 100%);
+}
+
+article.journal-entry:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 article.journal-entry .marker {
@@ -43,48 +68,231 @@ article.journal-entry .marker {
 }
 
 article.journal-entry .main-image-container {
-    width: 125px;
-    height: 168px;
-    overflow: hidden;
-    border-radius: 5px;
     flex-shrink: 0;
-    margin-right: 19px;
+    width: 320px;
+    height: 240px;
+    overflow: hidden;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #f5e6d3, #e8d5c3);
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 article.journal-entry .main-image {
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
+    filter: brightness(1.05) contrast(1.1) saturate(1.2);
 }
 
-.info-container span.country {
+article.journal-entry .main-image:hover {
+    transform: scale(1.08);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.country-flag {
+    font-size: 1.5rem;
+}
+
+.info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px 0;
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.location-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.marker {
+    width: 18px;
+    height: 18px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.country {
     text-transform: uppercase;
-    font-size: 0.7rem;
-    margin-right: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #8b4513;
+    background: linear-gradient(135deg, #d4af37, #c9a961);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.info-container a {
-    color: #2B283A;
-    font-size: 0.7rem;
-}
-
-.info-container a:visited {
-    color: #918E9B;
-}
-
-.info-container h2.entry-title {
-    margin-top: 7px;
-    margin-bottom: 17px;
-}
-
-.info-container p.trip-dates {
-    font-weight: bold;
-}
-
-.info-container p.entry-text {
-    line-height: 1.5;
+.location-detail {
     font-size: 0.8rem;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
+    color: #6c5b4f;
+    font-style: italic;
+}
+
+.maps-link {
+    background: linear-gradient(135deg, #1e90ff, #4169e1);
+    color: white;
+    font-size: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
+    border: none;
+}
+
+.maps-link:hover {
+    background: linear-gradient(135deg, #4169e1, #0000cd);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(30, 144, 255, 0.4);
+}
+
+.entry-title {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.4rem;
+    margin: 5px 0;
+}
+
+.rating-text {
+    font-size: 0.9rem;
+    color: #8b4513;
+    font-weight: 600;
+}
+
+.trip-dates {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #6c5b4f;
+    font-size: 1rem;
+    margin: 0;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 8px 16px;
+    border-radius: 25px;
+    width: fit-content;
+}
+
+.date-icon {
+    font-size: 1.1rem;
+}
+
+.entry-text {
+    line-height: 1.7;
+    color: #5d4e37;
+    font-size: 1rem;
+    margin: 0;
+    text-align: justify;
+    font-weight: 400;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(201, 169, 97, 0.2));
+    color: #8b4513;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(139, 69, 19, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(201, 169, 97, 0.3));
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 15px;
+    }
+    
+    article.journal-entry {
+        flex-direction: column;
+        margin-bottom: 40px;
+        padding: 25px;
+        gap: 20px;
+    }
+    
+    .main-image-container {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .location-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .entry-title {
+        font-size: 1.6rem;
+    }
+    
+    .tags {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    article.journal-entry {
+        padding: 20px;
+    }
+    
+    .main-image-container {
+        height: 220px;
+    }
+    
+    .entry-title {
+        font-size: 1.4rem;
+    }
 }
